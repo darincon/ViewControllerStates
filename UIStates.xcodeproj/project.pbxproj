@@ -7,18 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA3652102295B6D1D8734210 /* Pods_UIStates.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACBEE04808DD52B7EDD99E6C /* Pods_UIStates.framework */; };
 		F8F9964B1EA2C8D900A08783 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F9964A1EA2C8D900A08783 /* AppDelegate.swift */; };
 		F8F9964D1EA2C8D900A08783 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F9964C1EA2C8D900A08783 /* ViewController.swift */; };
-		F8F996501EA2C8D900A08783 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F8F9964E1EA2C8D900A08783 /* Main.storyboard */; };
 		F8F996521EA2C8D900A08783 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8F996511EA2C8D900A08783 /* Assets.xcassets */; };
 		F8F996551EA2C8D900A08783 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F8F996531EA2C8D900A08783 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		065317B3EFC320B37C043D1C /* Pods-UIStates.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIStates.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UIStates/Pods-UIStates.debug.xcconfig"; sourceTree = "<group>"; };
+		ACBEE04808DD52B7EDD99E6C /* Pods_UIStates.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UIStates.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D1A52920FEA497FA918E7211 /* Pods-UIStates.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIStates.release.xcconfig"; path = "Pods/Target Support Files/Pods-UIStates/Pods-UIStates.release.xcconfig"; sourceTree = "<group>"; };
 		F8F996471EA2C8D900A08783 /* UIStates.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UIStates.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8F9964A1EA2C8D900A08783 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F8F9964C1EA2C8D900A08783 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		F8F9964F1EA2C8D900A08783 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F8F996511EA2C8D900A08783 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F8F996541EA2C8D900A08783 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F8F996561EA2C8D900A08783 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -29,17 +31,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA3652102295B6D1D8734210 /* Pods_UIStates.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		242B886B3A56B995D0792C8B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				ACBEE04808DD52B7EDD99E6C /* Pods_UIStates.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C8537F35D5166E02AEF2EDE8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				065317B3EFC320B37C043D1C /* Pods-UIStates.debug.xcconfig */,
+				D1A52920FEA497FA918E7211 /* Pods-UIStates.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		F8F9963E1EA2C8D900A08783 = {
 			isa = PBXGroup;
 			children = (
 				F8F996491EA2C8D900A08783 /* UIStates */,
 				F8F996481EA2C8D900A08783 /* Products */,
+				C8537F35D5166E02AEF2EDE8 /* Pods */,
+				242B886B3A56B995D0792C8B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,7 +78,6 @@
 			children = (
 				F8F9964A1EA2C8D900A08783 /* AppDelegate.swift */,
 				F8F9964C1EA2C8D900A08783 /* ViewController.swift */,
-				F8F9964E1EA2C8D900A08783 /* Main.storyboard */,
 				F8F996511EA2C8D900A08783 /* Assets.xcassets */,
 				F8F996531EA2C8D900A08783 /* LaunchScreen.storyboard */,
 				F8F996561EA2C8D900A08783 /* Info.plist */,
@@ -71,9 +92,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F8F996591EA2C8D900A08783 /* Build configuration list for PBXNativeTarget "UIStates" */;
 			buildPhases = (
+				07A0081EB86FE70561452E13 /* [CP] Check Pods Manifest.lock */,
 				F8F996431EA2C8D900A08783 /* Sources */,
 				F8F996441EA2C8D900A08783 /* Frameworks */,
 				F8F996451EA2C8D900A08783 /* Resources */,
+				CCAEF6C7A6FC7ECC3FA54CE1 /* [CP] Embed Pods Frameworks */,
+				985FB14B298C3B73D84B7956 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -125,11 +149,58 @@
 			files = (
 				F8F996551EA2C8D900A08783 /* LaunchScreen.storyboard in Resources */,
 				F8F996521EA2C8D900A08783 /* Assets.xcassets in Resources */,
-				F8F996501EA2C8D900A08783 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		07A0081EB86FE70561452E13 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		985FB14B298C3B73D84B7956 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-UIStates/Pods-UIStates-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CCAEF6C7A6FC7ECC3FA54CE1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-UIStates/Pods-UIStates-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F8F996431EA2C8D900A08783 /* Sources */ = {
@@ -144,14 +215,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		F8F9964E1EA2C8D900A08783 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F8F9964F1EA2C8D900A08783 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		F8F996531EA2C8D900A08783 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -258,6 +321,7 @@
 		};
 		F8F9965A1EA2C8D900A08783 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 065317B3EFC320B37C043D1C /* Pods-UIStates.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = UIStates/Info.plist;
@@ -270,6 +334,7 @@
 		};
 		F8F9965B1EA2C8D900A08783 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D1A52920FEA497FA918E7211 /* Pods-UIStates.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = UIStates/Info.plist;
