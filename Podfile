@@ -1,7 +1,7 @@
 
 platform :ios, '10.3'
 
-target 'UIStates' do
+target 'ViewControllerStates' do
   use_frameworks!
   pod 'SnapKit', '~> 3.1.2'
 

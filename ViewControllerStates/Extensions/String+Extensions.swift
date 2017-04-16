@@ -1,6 +1,6 @@
 //
 //  String+Extensions.swift
-//  UIStates
+//  ViewControllerStates
 //
 //  Created by Diego Rincon on 4/16/17.
 //  Copyright © 2017 Scirestudios. All rights reserved.

@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double Pods_UIStatesVersionNumber;
-FOUNDATION_EXPORT const unsigned char Pods_UIStatesVersionString[];
+FOUNDATION_EXPORT double Pods_ViewControllerStatesVersionNumber;
+FOUNDATION_EXPORT const unsigned char Pods_ViewControllerStatesVersionString[];
 
