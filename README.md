@@ -1,8 +1,8 @@
-#UIStates
+# ViewControllerStates
 
 A simple project that shows how implementing states makes it easier to manage and update UI animations by defining each element's behavior for a given state.
 
-##Description
+## Description
 The project has a simple login screen with 4 different states:
 
 ```swift
@@ -35,5 +35,5 @@ UIView.animate(withDuration: 0.3,
 
 ```
 
-##License
-UIStates is released under the MIT license. See [license](/LICENSE) for details.
+## License
+ViewControllerStates is released under the MIT license. See [license](/LICENSE) for details.
