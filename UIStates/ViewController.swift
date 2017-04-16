@@ -35,14 +35,17 @@ class ViewController: UIViewController {
         static let widthMultiplier          = CGFloat(0.8)
         static let topMarginMultiplier      = CGFloat(0.05)
         static let emailVerticalMultiplier  = CGFloat(0.2)
+        
+        static let initialAnimationDuration = TimeInterval(1)
+        static let animationDuration        = TimeInterval(0.3)
+        static let initialDelay             = TimeInterval(1)
     }
     
-    var titleVerticalConstraint: Constraint?
-    var emailVerticalConstraint: Constraint?
-    var invalidEmailVerticalConstraint: Constraint?
-    var signInButtonVerticalConstraint: Constraint?
-    var signInButtonWidthConstraint: Constraint?
-    
+    private var titleVerticalConstraint: Constraint?
+    private var emailVerticalConstraint: Constraint?
+    private var invalidEmailVerticalConstraint: Constraint?
+    private var signInButtonVerticalConstraint: Constraint?
+    private var signInButtonWidthConstraint: Constraint?
     
     var state: LoginState = .initial {
         didSet {
@@ -50,7 +53,19 @@ class ViewController: UIViewController {
         }
     }
     
-    var placeholderAttributes: [String: Any]? {
+    private var isValidEmail: Bool {
+        return emailTextField.text?.isValidEmail == true
+    }
+    
+    private var isValidPassword: Bool {
+        guard let password = passwordTextField.text else {
+            return false
+        }
+        
+        return password.characters.count > 0
+    }
+    
+    private var placeholderAttributes: [String: Any]? {
         guard let font = Config.placeholderFont else {
             return nil
         }
@@ -63,6 +78,16 @@ class ViewController: UIViewController {
     
     lazy var backgroundImageView: UIImageView = {
         let imageView = UIImageView()
+        imageView.image = UIImage(named: "background")
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
+        
+        return imageView
+    }()
+    
+    lazy var blurredBackgroundImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "background_blurred")
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         
@@ -88,6 +113,7 @@ class ViewController: UIViewController {
         textField.autocorrectionType = .no
         textField.autocapitalizationType = .none
         textField.keyboardType = .emailAddress
+        textField.delegate = self
         
         return textField
     }()
@@ -99,6 +125,7 @@ class ViewController: UIViewController {
         textField.attributedPlaceholder = NSAttributedString(string: "password", attributes: self.placeholderAttributes)
         textField.font = Config.textFieldFont
         textField.isSecureTextEntry = true
+        textField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         
         return textField
     }()
@@ -132,13 +159,24 @@ class ViewController: UIViewController {
         
         setupSubviews()
         setupFixedLayouts()
-        updateSubviews(with: .initial)
+        state = .initial
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        let completion = { [weak self] (completed: Bool) -> Void in
+            self?.emailTextField.becomeFirstResponder()
+        }
+        
+        animateTransition(to: .waiting, duration: Config.initialAnimationDuration, delay: Config.initialDelay, completion: completion)
     }
     
     // MARK: Setup
     
-    func setupSubviews() {
+    private func setupSubviews() {
         view.addSubview(backgroundImageView)
+        view.addSubview(blurredBackgroundImageView)
         view.addSubview(signInLabel)
         view.addSubview(emailTextField)
         view.addSubview(invalidEmailLabel)
@@ -146,8 +184,12 @@ class ViewController: UIViewController {
         view.addSubview(signInButton)
     }
     
-    func setupFixedLayouts(){
+    private func setupFixedLayouts(){
         backgroundImageView.snp.makeConstraints { (make) in
+            make.center.size.equalToSuperview()
+        }
+        
+        blurredBackgroundImageView.snp.makeConstraints { (make) in
             make.center.size.equalToSuperview()
         }
         
@@ -183,8 +225,9 @@ class ViewController: UIViewController {
     
     // MARK: UI state updates
     
-    func updateSubviews(with state: LoginState) {
-        updateBackgroundImage(with: state)
+    private func updateSubviews(with state: LoginState) {
+        updateBackground(with: state)
+        updateBlurredBackground(with: state)
         updateSignInLabel(with: state)
         updateEmailField(with: state)
         updatePasswordField(with: state)
@@ -192,20 +235,25 @@ class ViewController: UIViewController {
         updateSignInButton(with: state)
     }
     
-    func updateBackgroundImage(with state: LoginState) {
-        let image: UIImage?
-        
+    private func updateBackground(with state: LoginState) {
         switch state {
         case .initial:
-            image = UIImage(named: "background")
+            backgroundImageView.alpha = 1.0
         case .waiting, .invalidEmail, .ready:
-            image = UIImage(named: "background_blurred")
+            backgroundImageView.alpha = 0.0
         }
-        
-        backgroundImageView.image = image
     }
     
-    func updateSignInLabel(with state: LoginState) {
+    private func updateBlurredBackground(with state: LoginState) {
+        switch state {
+        case .initial:
+            blurredBackgroundImageView.alpha = 0.0
+        case .waiting, .invalidEmail, .ready:
+            blurredBackgroundImageView.alpha = 1.0
+        }
+    }
+    
+    private func updateSignInLabel(with state: LoginState) {
         titleVerticalConstraint?.deactivate()
         
         switch state {
@@ -224,7 +272,7 @@ class ViewController: UIViewController {
         }
     }
     
-    func updateEmailField(with state: LoginState) {
+    private func updateEmailField(with state: LoginState) {
         emailVerticalConstraint?.deactivate()
         
         switch state {
@@ -243,7 +291,7 @@ class ViewController: UIViewController {
         }
     }
     
-    func updatePasswordField(with state: LoginState) {
+    private func updatePasswordField(with state: LoginState) {
         switch state {
         case .initial:
             passwordTextField.alpha = 0.0
@@ -252,7 +300,7 @@ class ViewController: UIViewController {
         }
     }
     
-    func updateInvalidEmailLabel(with state: LoginState) {
+    private func updateInvalidEmailLabel(with state: LoginState) {
         invalidEmailVerticalConstraint?.deactivate()
         
         switch state {
@@ -271,7 +319,7 @@ class ViewController: UIViewController {
         }
     }
     
-    func updateSignInButton(with state: LoginState) {
+    private func updateSignInButton(with state: LoginState) {
         switch state {
         case .initial:
             signInButton.alpha = 0.0
@@ -287,8 +335,10 @@ class ViewController: UIViewController {
             signInButton.titleLabel?.alpha = 0.0
             
             signInButtonVerticalConstraint?.deactivate()
+            signInButtonWidthConstraint?.deactivate()
             signInButton.snp.makeConstraints({ (make) in
                 signInButtonVerticalConstraint =  make.centerY.equalToSuperview().constraint
+                signInButtonWidthConstraint = make.width.equalTo(Config.itemHeight).constraint
             })
             
         case .ready:
@@ -300,6 +350,48 @@ class ViewController: UIViewController {
                 signInButtonWidthConstraint = make.width.equalToSuperview().multipliedBy(Config.widthMultiplier).constraint
             })
         }
+    }
+    
+    // MARK: Action methods
+    
+    func textFieldDidChange(_ textField: UITextField) {
+        informationDidchange()
+    }
+    
+    // MARK: Auxiliary methods
+    
+    private func animateTransition(to state: LoginState, duration: TimeInterval = Config.animationDuration, delay: TimeInterval = 0.0, completion: ((Bool) -> Void)? = nil) {
+        let animations = { [weak self] in
+            self?.state = state
+            self?.view.layoutIfNeeded()
+        }
+        
+        self.view.layoutIfNeeded()
+        UIView.animate(withDuration: duration,
+                       delay: delay,
+                       options: .curveEaseInOut,
+                       animations: animations,
+                       completion: completion)
+    }
+    
+    fileprivate func informationDidchange() {
+        if !isValidEmail {
+            animateTransition(to: .invalidEmail)
+        }
+        else if isValidPassword {
+            animateTransition(to: .ready)
+        }
+        else {
+            animateTransition(to: .waiting)
+        }
+    }
+}
+
+// MARK: UITextFieldDelegate
+
+extension ViewController: UITextFieldDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        informationDidchange()
     }
 }
 

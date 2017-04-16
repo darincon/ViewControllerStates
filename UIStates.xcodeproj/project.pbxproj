@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		AA3652102295B6D1D8734210 /* Pods_UIStates.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACBEE04808DD52B7EDD99E6C /* Pods_UIStates.framework */; };
 		F848C0291EA2CF210078719D /* UnderlinedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F848C0281EA2CF210078719D /* UnderlinedTextField.swift */; };
+		F848C02B1EA3E2230078719D /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F848C02A1EA3E2230078719D /* String+Extensions.swift */; };
 		F8F9964B1EA2C8D900A08783 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F9964A1EA2C8D900A08783 /* AppDelegate.swift */; };
 		F8F9964D1EA2C8D900A08783 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F9964C1EA2C8D900A08783 /* ViewController.swift */; };
 		F8F996521EA2C8D900A08783 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8F996511EA2C8D900A08783 /* Assets.xcassets */; };
@@ -20,6 +21,7 @@
 		ACBEE04808DD52B7EDD99E6C /* Pods_UIStates.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UIStates.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1A52920FEA497FA918E7211 /* Pods-UIStates.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIStates.release.xcconfig"; path = "Pods/Target Support Files/Pods-UIStates/Pods-UIStates.release.xcconfig"; sourceTree = "<group>"; };
 		F848C0281EA2CF210078719D /* UnderlinedTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnderlinedTextField.swift; sourceTree = "<group>"; };
+		F848C02A1EA3E2230078719D /* String+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		F8F996471EA2C8D900A08783 /* UIStates.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UIStates.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8F9964A1EA2C8D900A08783 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F8F9964C1EA2C8D900A08783 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 				F8F996531EA2C8D900A08783 /* LaunchScreen.storyboard */,
 				F8F996561EA2C8D900A08783 /* Info.plist */,
 				F848C0281EA2CF210078719D /* UnderlinedTextField.swift */,
+				F848C02A1EA3E2230078719D /* String+Extensions.swift */,
 			);
 			path = UIStates;
 			sourceTree = "<group>";
@@ -123,6 +126,7 @@
 				TargetAttributes = {
 					F8F996461EA2C8D900A08783 = {
 						CreatedOnToolsVersion = 8.3.1;
+						DevelopmentTeam = Q6MVMV6FGT;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -210,6 +214,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F848C02B1EA3E2230078719D /* String+Extensions.swift in Sources */,
 				F8F9964D1EA2C8D900A08783 /* ViewController.swift in Sources */,
 				F848C0291EA2CF210078719D /* UnderlinedTextField.swift in Sources */,
 				F8F9964B1EA2C8D900A08783 /* AppDelegate.swift in Sources */,
@@ -328,6 +333,7 @@
 			baseConfigurationReference = 065317B3EFC320B37C043D1C /* Pods-UIStates.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = Q6MVMV6FGT;
 				INFOPLIST_FILE = UIStates/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.scirestudios.UIStates;
@@ -341,6 +347,7 @@
 			baseConfigurationReference = D1A52920FEA497FA918E7211 /* Pods-UIStates.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = Q6MVMV6FGT;
 				INFOPLIST_FILE = UIStates/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.scirestudios.UIStates;
